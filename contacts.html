@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta charset="utf-8">
+     <title>BookYan</title>
+     <link href="styles/styles.css" rel="stylesheet" type= "text/css">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"  type= "text/css">
+</head>
+
+<body>
+  
+    <header class="container">
+      <img src="/img/logo1.png" alt="Error 404">
+      <nav>
+        <ul>
+          <li><a href="/Моя первая страница.html">Home</a></li>
+          <li><a href="/aboutAs.html">About as</a></li>
+          
+          <li><a href="/reservation.html">Reservations</a></li>
+          <li><a href="/penalty.html">Penalties</a></li>
+          <li class="active"><a href="/contacts.html">Contacts</a></li>
+          <li class="btn"><a href="/Моя первая страница.html#bottom">Register</a></li>
+        </ul>
+      </nav>
+    </header>
+   
+    <div class="container hero-contacts">
+    <h1>Мы ответим в любое время и отпрвим Вашу любимую книжку в любую точку мира!! </h1>
+    <p>Для этого Вам сначала нужно будет зарегистрироваться.</p>
+    <img src="/img/world.jpg" alt="Error 404">
+   </div>
+    
+  <div class="feedback">
+    <div class="container">
+        <h2>Say Hello</h2>
+        <p>Напишите отзыв о нашей компании.</p>
+        <form> 
+            <div class="inline">
+                <div>
+                    <label>First Name</label>
+                    <input type="name" id="firstName">
+                </div>
+                <div>
+                    <label>Last Name</label>
+                    <input type="surname" id="lastName">
+                </div>
+            </div>
+            <label for="">Email Address</label>
+            <input type="email" id="emailField" class="one-line">
+            <label for="">Message</label>
+            <textarea class="one-line" id="messageField"></textarea>
+            <button onclick= contacts() type="button">Отправить</button>
+        </form>
+    </div>
+  </div>
+
+  <script>
+    
+      function contacts() {
+    let name = document.querySelector('#firstName').value;
+    let surname = document.querySelector('#lastName').value; // Исправлено
+    let email = document.querySelector('#emailField').value; // Исправлено
+    let message = document.querySelector('#messageField').value; // Исправлено
+
+    // Проверяем, заполнены ли все поля
+    if (!name || !surname || !email || !message) {
+        alert("Ошибка!! Не все поля заполнены!");
+    } else {
+        alert("Ваш отзыв успешно отправлен");
+    }
+}
+  </script>
+  <footer>
+    <div class="container blocks">
+      <div>
+        <span class="logo">BookYan</span>
+        <p>Мы очень рады, что вы зашли на наш сайт</p>
+      </div>
+      <div>
+        <h4>Contacts</h4>
+        <ul>
+          <li>+7-495-777-77-77</li>
+          <li>BookYan@mail.ru</li>
+          
+        </ul>
+      </div>
+      <div>
+        <h4>Messengers</h4>
+        <ul>
+          <li><a href="#">ВКонтакте</a></li>
+          <li><a href="#">Instagramm</a></li>
+          <li><a href="#">Telegramm</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p>Заходите ещё!</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta charset="utf-8">
+     <title>BookYan</title>
+     <link href="styles/styles.css" rel="stylesheet" type= "text/css">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"  type= "text/css">
+</head>
+
+<body>
+  
+    <header class="container">
+      <img src="/img/logo1.png" alt="Error 404">
+      <nav>
+        <ul>
+          <li><a href="/Моя первая страница.html">Home</a></li>
+          <li><a href="/aboutAs.html">About as</a></li>
+          
+          <li><a href="/reservation.html">Reservations</a></li>
+          <li class="active"><a href="/penalty.html">Penalties</a></li>
+          <li><a href="/contacts.html">Contacts</a></li>
+          <li class="btn"><a href="/Моя первая страница.html#bottom">Register</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container penal">
+        <div class="info">
+            <h1>Штрафы и просрочки — правила возврата и начисления</h1>
+            <p>
+                Если вы задержали возврат бронированной книги или получили товар, требующий возврата,
+                 с вас может взиматься штраф в соответствии с правилами магазина — 
+                 сумма рассчитывается по дням просрочки или исходя из стоимости издания; 
+                 все детали, сроки и способы оплаты указаны ниже,
+                 а при спорных случаях мы оперативно рассмотрим обращение и предложим решение.
+            </p>
+        </div>
+        <img src="/img/straf1.jpg" alt="Error 404">
+    </div>
+   
+    <div class="penaltyback">
+      <div class="container info">
+        <h2>
+          Задолженность и срок оплаты
+
+        </h2>
+        <p>
+          Введите информацию, чтобы посмотреть задолженность 
+        </p>
+
+        <form >
+          <div>
+            <label>
+              Id Бронирования
+
+            </label>
+            <input type="penal" id="penalty">
+          </div>
+          <button onclick= checkPenalty() type = "button">Продолжить</button>
+        </form>
+
+      </div>
+    </div>
+  <script>
+    function checkPenalty() {
+      let reservId = document.querySelector('#penalty').value;
+      if (!reservId) {
+        alert("Поле не заполнено");
+      }
+      else{
+          alert("Успешно! \n Ваши штрафы: ");
+      }
+    }
+  </script>
+  <footer>
+    <div class="container blocks">
+      <div>
+        <span class="logo">BookYan</span>
+        <p>Мы очень рады, что вы зашли на наш сайт</p>
+      </div>
+      <div>
+        <h4>Contacts</h4>
+        <ul>
+          <li>+7-495-777-77-77</li>
+          <li>BookYan@mail.ru</li>
+          
+        </ul>
+      </div>
+      <div>
+        <h4>Messengers</h4>
+        <ul>
+          <li><a href="#">ВКонтакте</a></li>
+          <li><a href="#">Instagramm</a></li>
+          <li><a href="#">Telegramm</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p>Заходите ещё!</p>
+  </footer>
+</body>
+</html>

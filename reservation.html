@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta charset="utf-8">
+     <title>BookYan</title>
+     <link href="styles/styles.css" rel="stylesheet" type= "text/css">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"  type= "text/css">
+</head>
+
+<body>
+  
+    <header class="container">
+     <img src="/img/logo1.png" alt="Error 404">
+      <nav>
+        <ul>
+          <li><a href="/Моя первая страница.html">Home</a></li>
+          <li><a href="/aboutAs.html">About as</a></li>
+          
+          <li class="active"><a href="/reservation.html">Reservations</a></li>
+          <li><a href="/penalty.html">Penalties</a></li>
+          <li><a href="/contacts.html">Contacts</a></li>
+         <li class="btn"><a href="/Моя первая страница.html#bottom">Register</a></li>
+        </ul>
+      </nav>
+    </header>
+   
+    <div class="container reservation">
+        <div class="info">
+            <h1>Бронирование и доставка — зарезервируйте книгу онлайн</h1>
+            <p>Не нашли нужную книгу в наличии или хотите гарантировать получение новинки — оставьте бронирование: 
+                укажите название, автора и удобную дату получения; мы удержим экземпляр в магазине в течение 72 часов, 
+                вышлем подтверждение на почту и можем отправить книгу в любую точку мира удобной вам службой доставки.</p>
+                
+        </div>
+        <img src="/img/bookin.webp" alt="">
+    </div>
+    <div class="reservback">
+      <div class="container">
+         <h2>Окно для бронирования</h2>
+         <h4>Закажи сейчас и получи 30% скидку на следующую покупку.</h4>
+         
+         <form>
+          <div class="inline">
+            <div>
+              <label>Название книги</label>
+             <input type="text" id="book" placeholder="Введите название книги" required>
+            </div>
+            <div>
+              <label>Автор</label>
+             <input type="text" class="author" placeholder="Введите имя автора" required>
+            </div>
+              
+          </div>
+          <button onclick=reserv() type="button">Забронировать</button>
+         </form>
+           
+
+
+         
+         <div class="block">
+
+           <p>С уважением и любовью</p>
+           <p>Ваш BookYan</p>
+         </div>
+      </div>
+    </div>
+  <script>
+    
+      function contacts() {
+    let name = document.querySelector('#firstName').value;
+    let surname = document.querySelector('#lastName').value; // Исправлено
+    let email = document.querySelector('#emailField').value; // Исправлено
+    let message = document.querySelector('#messageField').value; // Исправлено
+
+    // Проверяем, заполнены ли все поля
+    if (!name || !surname || !email || !message) {
+        alert("Ошибка!! Не все поля заполнены!");
+    } else {
+        alert("Ваш отзыв успешно отправлен");
+    }
+}
+  </script>
+
+  <script>
+     async function reserv() {
+    const bookTitle = document.querySelector('#book').value.trim();
+    const bookAuthors = Array.from(document.querySelectorAll('.author')).map(input => input.value.trim()).filter(name => name); // собираем всех авторов из input с классом "author"
+
+    if (!bookTitle || bookAuthors.length === 0) {
+        alert("Не все поля заполнены!");
+        return;
+    }
+
+    const body = { BookTitle: bookTitle, AuthorsName: bookAuthors }; // передаем массив авторов
+
+    try {
+        const res = await fetch('https://localhost:7146/Reservation/CreateReservationNoAuth', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        });
+
+        if (res.ok) {
+            const data = await res.json();
+            alert('Ваша книга забронирована. id: ' + (data.id ?? data.Id ?? 'неизвестен'));
+        } else if (res.status === 404) {
+            const text = await res.text();
+            alert('Не найдено: ' + text);
+        } else {
+            const text = await res.text();
+            alert('Ошибка: ' + (text || res.statusText));
+        }
+    } catch (err) {
+        alert('Сетевая ошибка: ' + err.message);
+    }
+}
+  </script>
+
+  <footer>
+    <div class="container blocks">
+      <div>
+        <span class="logo">BookYan</span>
+        <p>Мы очень рады, что вы зашли на наш сайт</p>
+      </div>
+      <div>
+        <h4>Contacts</h4>
+        <ul>
+          <li>+7-495-777-77-77</li>
+          <li>BookYan@mail.ru</li>
+          
+        </ul>
+      </div>
+      <div>
+        <h4>Messengers</h4>
+        <ul>
+          <li><a href="#">ВКонтакте</a></li>
+          <li><a href="#">Instagramm</a></li>
+          <li><a href="#">Telegramm</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p>Заходите ещё!</p>
+  </footer>
+</body>
+</html>

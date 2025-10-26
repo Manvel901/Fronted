@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BookYan</title>
+  <link href="styles/styles.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" type="text/css">
+  <style>
+    html { scroll-behavior: smooth; }
+    .btn a { color: inherit; text-decoration: none; display: inline-block; padding: 8px 12px; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="container">
+      <img src="/img/logo1.png" alt="Error 404">
+      <nav>
+        <ul>
+          <li class="active"><a href="/Моя первая страница.html">Home</a></li>
+          <li><a href="/aboutAs.html">About as</a></li>
+          
+          <li><a href="/reservation.html">Reservations</a></li>
+          <li><a href="/penalty.html">Penalties</a></li>
+          <li><a href="/contacts.html">Contacts</a></li>
+          <!-- ссылка на конец главной страницы -->
+          <li class="btn"><a href="/Моя первая страница.html#bottom">Register</a></li>
+          <li><button onclick=sigIn()>Sig in</button></li>
+        </ul>
+      </nav>
+    </header>
+
+     <script> 
+    function isValidEmail(email) {
+      if (!email) return false;
+      const at = email.indexOf('@');
+      const dot = email.lastIndexOf('.');
+      return at > 0 && dot > at + 1 && dot < email.length - 1;
+    }
+
+    function sigIn() {
+      const name = prompt('Ваш никнейм');
+      if (!name || !name.trim()) {
+        alert('Пожалуйста, введите имя.');
+        return;
+      }
+
+      const email = prompt('Напишите Вашу рабочую почту');
+      if (!email || !email.trim()) {
+        alert('Пожалуйста, введите email.');
+        return;
+      }
+
+      if (!isValidEmail(email.trim())) {
+        alert('Неверный email: проверьте наличие символа "@" и точки после него.');
+        return;
+      }
+
+      alert(`Привет, ${name.trim()}!`);
+    }
+  </script>
+      
+    <div class="hero container">
+      <div class="hero-info">
+        <h1><strong>BookYan - Самый популярный книжный магазин на Закавказье</strong></h1>
+        <h2>Скидка 30% при покупке двух книг из новогодней коллекции</h2>
+        <button class="btn" onclick="location.href='/Моя первая страница.html#bottom'">Смотреть каталог</button>
+      </div>
+      <img src="/img/orig.jpg" alt="Что-то понло не по плану">
+    </div>
+
+    <div class="container reading">
+      <a href="#" class="see-all">SEE ALL</a>
+      <h2>Best Seller Books</h2>
+
+      <div class="books">
+        <div class="block">
+          <img src="/img/levshi.png" alt="Картинка">
+          <span><img src="/img/onfire4x_86979.png" alt=""> «Леший (комедия в 4-х действиях)» </span>
+        </div>
+        <div class="block">
+          <img src="/img/doch.png" alt="Картинка">
+          <span><img src="/img/onfire4x_86979.png" alt=""> «Наталья, боярская дочь»</span>
+        </div>
+        <div class="block">
+          <img src="/img/egipt.png" alt="Картинка">
+          <span><img src="/img/onfire4x_86979.png" alt=""> «Египетские ночи» </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container bigtext">
+      <p>Самая популярная книга на данный момент</p>
+    </div>
+
+    <div class="container banner">
+      <div class="banner-text">
+        <h3>Самая популярная книга</h3>
+        <p>Книга «Самый богатый человек в Вавилоне» Джорджа Клейсона — это сборник притч, 
+          которые учат управлять деньгами через простые, но универсальные принципы. 
+          Автор использует притчи из жизни жителей Древнего Вавилона, 
+          чтобы объяснить сложные экономические концепции простым и понятным языком</p>
+      </div>
+      <img src="/img/book2.0.jpg" alt="">
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="container">
+      <h2>Рекомендуемые книги от нашего сайта</h2>
+      <p>Мы подобрали по Вашим интересам несколько книг, которые отправляют нас в необыкновенные путешествия</p>
+      <div class="books">
+        <div class="block">
+          <img src="/img/kiti.jpg" alt="">
+          <p>"КОН-ТИКИ"</p>
+          <span><img src="/img/right-arrow_4983204.png" alt=""></span>
+        </div>
+        <div class="block">
+          <img src="/img/shantaram.jpg" alt="">
+          <p>"ШАНТАРАМ"</p>
+          <span><img src="/img/right-arrow_4983204.png" alt=""></span>
+        </div>
+        <div class="block">
+          <img src="/img/80_let.jpg" alt="">
+          <p>"ВОКРУГ СВЕТА ЗА 80 ДНЕЙ"</p>
+          <span><img src="/img/right-arrow_4983204.png" alt=""></span>
+        </div>
+        <div class="block">
+          <img src="/img/eat.jpg" alt="">
+          <p>"ЕСТЬ, МОЛИТЬСЯ, ЛЮБИТЬ"</p>
+          <span><img src="/img/right-arrow_4983204.png" alt=""></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="container books">
+      <h3>Новые книги!!!</h3>
+      <p>На сайте появились книги, которых ещё нигде нет!</p>
+      <div class="block1">
+        <img src="/img/hadid.jpg" alt="">
+        <img src="/img/hokwarts.jpg" alt="">
+        <img src="/img/talant.jpg" alt="">
+      </div>
+      <div class="block1">
+        <img src="/img/zemlya.jpg" alt="">
+        <img src="/img/teli.jpg" alt="">
+        <img src="/img/taini.jpg" alt="">
+      </div>
+      <a href="#" class="see-all">SEE ALL</a>
+    </div>
+
+ <div class="container email">
+  <h2>Регистрация</h2>
+  <p>Зарегистрируйся сегодня и получи скидку в размере 45% на первую книгу!!!</p>
+  <div class="block">
+    <div>
+      <h3>Окно регистрации</h3>
+    </div>
+    <div>
+      <input id="regFullName" placeholder="Введите имя" />
+      <input id="regEmail" type="email" placeholder="Введите email" />
+      <input id="regPassword" type="password" placeholder="Введите пароль" />
+      <button id="regBtn">Продожить</button>
+      <div id="regMsg"></div>
+    </div>
+  </div>
+</div>
+
+  <footer>
+    <div class="container blocks">
+      <div>
+        <span class="logo">BookYan</span>
+        <p>Мы очень рады, что вы зашли на наш сайт</p>
+      </div>
+      <div>
+        <h4>Contacts</h4>
+        <ul>
+          <li>+7-495-777-77-77</li>
+          <li>BookYan@mail.ru</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Messengers</h4>
+        <ul>
+          <li><a href="#">ВКонтакте</a></li>
+          <li><a href="#">Instagramm</a></li>
+          <li><a href="#">Telegramm</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p>Заходите ещё!</p>
+  </footer>
+
+  <!-- якорь в конце страницы -->
+  <div id="bottom" style="height:1px; visibility:hidden;"></div>
+
+ <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.email .block');
+  
+  function isValidEmail(email) {
+    if (!email) return false;
+    const at = email.indexOf('@');
+    const dot = email.lastIndexOf('.');
+    return at > 0 && dot > at + 1 && dot < email.length - 1;
+  }
+
+  document.getElementById('regBtn').addEventListener('click', async () => {
+    const fullName = document.getElementById('regFullName').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const password = document.getElementById('regPassword').value;
+
+    const msg = document.getElementById('regMsg');
+    msg.textContent = '';
+    msg.className = ''; // Сбрасываем классы сообщения
+    
+    if (!fullName) { 
+      msg.textContent = 'Введите имя.'; 
+      msg.className = 'error';
+      return; 
+    }
+    if (!isValidEmail(email)) { 
+      msg.textContent = 'Неверный email.'; 
+      msg.className = 'error';
+      return; 
+    }
+    if (!password || password.length < 6) { 
+      msg.textContent = 'Пароль минимум 6 символов.'; 
+      msg.className = 'error';
+      return; 
+    }
+
+    try {
+      // Пробуем разные варианты названий полей
+      // Отправляем данные в формате RegisterRequest
+const response = await fetch('http://localhost:5236/User/RegisterUser', {
+    method: 'POST',
+    headers: { 
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        FullName: fullName,
+        Email: email,
+        PasswordHash: password  // Открытый пароль
+    })
+});
+
+      console.log('Статус ответа:', response.status); // Для отладки
+
+      if (response.ok) {
+        const result = await response.json();
+        msg.textContent = 'Вы зарегистрировались. Ваш id: ' + result;
+        msg.className = 'success';
+        // Очистка полей
+        document.getElementById('regFullName').value = '';
+        document.getElementById('regEmail').value = '';
+        document.getElementById('regPassword').value = '';
+      } else {
+        const errorText = await response.text();
+        console.log('Текст ошибки:', errorText); // Для отладки
+        
+        try {
+          const errorData = JSON.parse(errorText);
+          
+          if (response.status === 400 && errorData.errors) {
+            // Собираем все ошибки валидации в одну строку
+            const errorMessages = [];
+            for (const field in errorData.errors) {
+              errorMessages.push(...errorData.errors[field]);
+            }
+            msg.textContent = 'Ошибки: ' + errorMessages.join(', ');
+            msg.className = 'error';
+          } else {
+            msg.textContent = errorData.title || 'Ошибка регистрации';
+            msg.className = 'error';
+          }
+        } catch (e) {
+          // Если не удалось распарсить JSON
+          msg.textContent = errorText || 'Ошибка регистрации';
+          msg.className = 'error';
+        }
+      }
+    } catch (err) {
+      console.error('Сетевая ошибка:', err);
+      msg.textContent = 'Сетевая ошибка: ' + err.message;
+      msg.className = 'error';
+    }
+  });
+});
+</script>
+  <script>
+
+    // Надёжная прокрутка на якорь после загрузки, если в URL есть #bottom
+    window.addEventListener('load', () => {
+      if (location.hash === '#bottom') {
+        const el = document.getElementById('bottom');
+        if (el) {
+          // небольшая задержка для динамически загружаемых ресурсов
+          setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 50);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+```
