@@ -83,39 +83,83 @@
   </script>
 
   <script>
-     async function reserv() {
-    const bookTitle = document.querySelector('#book').value.trim();
-    const bookAuthors = Array.from(document.querySelectorAll('.author')).map(input => input.value.trim()).filter(name => name); // собираем всех авторов из input с классом "author"
 
+async function reserv() {
+    const bookTitle = document.querySelector('#book').value.trim();
+    const bookAuthors = Array.from(document.querySelectorAll('.author'))
+        .map(input => input.value.trim())
+        .filter(name => name);
+
+    // Проверка на заполнение полей
     if (!bookTitle || bookAuthors.length === 0) {
         alert("Не все поля заполнены!");
         return;
     }
 
-    const body = { BookTitle: bookTitle, AuthorsName: bookAuthors }; // передаем массив авторов
+    // Получаем токен
+    const token = localStorage.getItem('authToken');
+
+    if (!token) {
+        alert('Вы не авторизованы! Пожалуйста, войдите в систему.');
+        return;
+    }
+
+    // ИСПРАВЛЕНО: меняем AuthorsName на AuthorName
+   const body = { 
+    BookTitle: bookTitle, 
+    AuthorName: bookAuthors[0] // Только первый автор
+};
+
+    console.log('Отправка запроса на бронирование:', body);
 
     try {
-        const res = await fetch('https://localhost:7146/Reservation/CreateReservationNoAuth', {
+        const res = await fetch('http://localhost:5236/Reservation/CreateReservationByTitle', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
             body: JSON.stringify(body)
         });
 
+        console.log('Статус ответа:', res.status);
+
+        // Обработка ответа от сервера
         if (res.ok) {
             const data = await res.json();
-            alert('Ваша книга забронирована. id: ' + (data.id ?? data.Id ?? 'неизвестен'));
+            alert('✅ Книга успешно забронирована! ID: ' + (data.id ?? data.Id ?? 'неизвестен'));
+            
+            // Очищаем поля формы после успешного бронирования
+            document.querySelector('#book').value = '';
+            document.querySelectorAll('.author').forEach(input => input.value = '');
+        } else if (res.status === 401) {
+            alert('❌ Ошибка авторизации. Пожалуйста, войдите в систему снова.');
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('currentUser');
         } else if (res.status === 404) {
             const text = await res.text();
-            alert('Не найдено: ' + text);
+            alert('❌ Не найдено: ' + text);
+        } else if (res.status === 400) {
+            // Детальная обработка ошибок валидации
+            const errorData = await res.json();
+            console.error('Ошибки валидации:', errorData.errors);
+            
+            if (errorData.errors && errorData.errors.AuthorName) {
+                alert('❌ Ошибка в поле автора: ' + errorData.errors.AuthorName.join(', '));
+            } else {
+                alert('❌ Ошибка валидации: ' + JSON.stringify(errorData.errors));
+            }
         } else {
             const text = await res.text();
-            alert('Ошибка: ' + (text || res.statusText));
+            alert('❌ Ошибка: ' + (text || res.statusText));
         }
     } catch (err) {
-        alert('Сетевая ошибка: ' + err.message);
+        console.error('Ошибка бронирования:', err);
+        alert('❌ Сетевая ошибка: ' + err.message);
     }
 }
-  </script>
+
+</script>
 
   <footer>
     <div class="container blocks">

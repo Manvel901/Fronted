@@ -32,13 +32,15 @@ font-weight: 800;
 header nav{
     float: right;
     width: 60%;
+    margin-top: 10px;
 }
 
 header nav ul{
     list-style: none;
     display: flex;
     justify-content: space-between;
-   
+   margin-top: 10px;
+   padding-bottom: 10px;
     z-index: 2;
 }
 
@@ -128,12 +130,12 @@ header nav ul li.btn a:hover,.email .block button:hover
 .hero-info .btn{
    color: white;
    background:rgb(0, 231, 85); 
-   border-radius: 300px;
-   padding: 25px, 39px, 25px, 40px;
+   border-radius: 30px;
+   padding: 25px 39px 25px 40px;
    border: 0;
    transition: all 500ms ease;
-   font-size: 16px;
-   font-weight: 300;
+   font-size: 20px;
+   font-weight: 600;
 }
 
 .hero-info .btn:hover{
@@ -163,6 +165,39 @@ body{
   color: white;
   background: linear-gradient(90deg,rgba(40, 250, 222, 1) 0%, rgba(164, 235, 191, 1) 45%);;
 }
+html { scroll-behavior: smooth; }
+.btn a { color: inherit; text-decoration: none; display: inline-block; padding: 8px 12px; }
+.success {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid green;
+      border-radius: 4px;
+    }
+.error {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid red;
+      border-radius: 4px;
+    }
+.hidden { display: none !important; }
+#userWelcome {
+      display: inline-block;
+      margin-right: 10px;
+      margin-top: -10px;
+      color: rgb(17, 106, 108);
+    }
+#tokenDisplay {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      word-break: break-all;
+      font-family: monospace;
+    }
 
 /* Слайд 2 для книг*/
 
@@ -574,9 +609,6 @@ padding: 50px 0;
     
 }
 
-.feedback form .inline > div{
-width: 50%;
-}
 .feedback form  label{
 
     color: rgb(255, 255, 255);
