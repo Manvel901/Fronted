@@ -1,73 +1,115 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-     <meta charset="utf-8">
-     <title>BookYan</title>
-     <link href="styles/styles.css" rel="stylesheet" type= "text/css">
-   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"  type= "text/css">
+  <meta charset="utf-8">
+  <title>BookYan</title>
+  <link href="styles/styles.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" type="text/css">
+  <style>
+    .hidden { display: none !important; }
+    #userWelcome {
+      display: inline-block;
+      margin-right: 10px;
+      color: white;
+    }
+    #authItem button {
+      background: none;
+      border: 1px solid white;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .success {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid green;
+      border-radius: 4px;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid red;
+      border-radius: 4px;
+    }
+    .comments-container {
+      margin-top: 30px;
+    }
+    .comment-item {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .comment-rating {
+      color: #ffa500;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
-  
-    <header class="container">
-      <img src="/img/logo1.png" alt="Error 404">
-      <nav>
-        <ul>
-          <li><a href="/Моя первая страница.html">Home</a></li>
-          <li><a href="/aboutAs.html">About as</a></li>
-          
-          <li><a href="/reservation.html">Reservations</a></li>
-          <li><a href="/penalty.html">Penalties</a></li>
-          <li class="active"><a href="/contacts.html">Contacts</a></li>
-          <li class="btn"><a href="/Моя первая страница.html#bottom">Register</a></li>
-        </ul>
-      </nav>
-    </header>
+  <header class="container">
+    <img src="/img/logo1.png" alt="Error 404">
+    <nav>
+      <ul>
+        <li><a href="/Моя первая страница.html">Home</a></li>
+        <li><a href="/aboutAs.html">About as</a></li>
+        <li><a href="/reservation.html">Reservations</a></li>
+        <li><a href="/penalty.html">Penalties</a></li>
+        <li class="active"><a href="/contacts.html">Contacts</a></li>
+        <li id="registerNav" class="btn"><a href="/Моя первая страница.html#bottom">Register</a></li>
+        <li id="authItem"><button>Авторизация</button></li>
+      </ul>
+    </nav>
+  </header>
    
-    <div class="container hero-contacts">
-    <h1>Мы ответим в любое время и отпрвим Вашу любимую книжку в любую точку мира!! </h1>
+  <div class="container hero-contacts">
+    <h1>Мы ответим в любое время и отправим Вашу любимую книжку в любую точку мира!!</h1>
     <p>Для этого Вам сначала нужно будет зарегистрироваться.</p>
     <img src="/img/world.jpg" alt="Error 404">
-   </div>
+  </div>
     
   <div class="feedback">
     <div class="container">
-        <h2>Say Hello</h2>
-        <p>Напишите отзыв о нашей компании.</p>
-        <form> 
-            <div class="inline">
-                <div>
-                    <label>FullName</label>
-                    <input type="name" id="firstName">
-                </div>
-               
-            </div>
-            <label for="">Email Address</label>
-            <input type="email" id="emailField" class="one-line">
-            <label for="">Message</label>
-            <textarea class="one-line" id="messageField"></textarea>
-            <button onclick= contacts() type="button">Отправить</button>
-        </form>
+      <h2>Оставьте отзыв</h2>
+      <p>Поделитесь вашим мнением о нашей компании.</p>
+      
+      <!-- Форма для отправки отзыва -->
+      <form id="feedbackForm">
+        <label for="messageField">Сообщение</label>
+        <textarea class="one-line" id="messageField" placeholder="Введите ваш отзыв..." required></textarea>
+        
+        <label for="ratingField">Оценка (1-5)</label>
+        <select id="ratingField" class="one-line" required>
+          <option value="">Выберите оценку</option>
+          <option value="5">5 - Отлично</option>
+          <option value="4">4 - Хорошо</option>
+          <option value="3">3 - Удовлетворительно</option>
+          <option value="2">2 - Плохо</option>
+          <option value="1">1 - Очень плохо</option>
+        </select>
+        
+        <button type="button" onclick="submitFeedback()">Отправить отзыв</button>
+      </form>
+      
+      <!-- Сообщение о результате -->
+      <div id="feedbackMessage"></div>
+      
+      
     </div>
   </div>
 
-  <script>
-    
-      function contacts() {
-    let name = document.querySelector('#firstName').value;
-    let surname = document.querySelector('#lastName').value; // Исправлено
-    let email = document.querySelector('#emailField').value; // Исправлено
-    let message = document.querySelector('#messageField').value; // Исправлено
-
-    // Проверяем, заполнены ли все поля
-    if (!name || !surname || !email || !message) {
-        alert("Ошибка!! Не все поля заполнены!");
-    } else {
-        alert("Ваш отзыв успешно отправлен");
-    }
-}
-  </script>
   <footer>
     <div class="container blocks">
       <div>
@@ -79,7 +121,6 @@
         <ul>
           <li>+7-495-777-77-77</li>
           <li>BookYan@mail.ru</li>
-          
         </ul>
       </div>
       <div>
@@ -94,5 +135,130 @@
     <hr>
     <p>Заходите ещё!</p>
   </footer>
+
+  <script>
+    // Функция для отправки отзыва
+    async function submitFeedback() {
+      const token = localStorage.getItem('authToken');
+      if (!token) {
+        alert('Сначала авторизуйтесь!');
+        return;
+      }
+
+      const message = document.getElementById('messageField').value.trim();
+      const rating = document.getElementById('ratingField').value;
+
+      const feedbackMessage = document.getElementById('feedbackMessage');
+      feedbackMessage.textContent = '';
+      feedbackMessage.className = '';
+
+      if (!message) {
+        feedbackMessage.textContent = 'Пожалуйста, введите сообщение';
+        feedbackMessage.className = 'error';
+        return;
+      }
+
+      if (!rating) {
+        feedbackMessage.textContent = 'Пожалуйста, выберите оценку';
+        feedbackMessage.className = 'error';
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:5236/Email/CreateComment', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            Comment: message,
+            Rating: parseInt(rating)
+          })
+        });
+
+        if (response.ok) {
+          const commentId = await response.json();
+          feedbackMessage.textContent = 'Отзыв успешно отправлен! Спасибо за ваше мнение.';
+          feedbackMessage.className = 'success';
+          
+          // Очищаем форму
+          document.getElementById('messageField').value = '';
+          document.getElementById('ratingField').value = '';
+          
+          // Обновляем список отзывов
+          loadComments();
+        } else {
+          const errorText = await response.text();
+          feedbackMessage.textContent = 'Ошибка при отправке отзыва: ' + errorText;
+          feedbackMessage.className = 'error';
+        }
+      } catch (err) {
+        console.error('Ошибка:', err);
+        feedbackMessage.textContent = 'Ошибка сети: ' + err.message;
+        feedbackMessage.className = 'error';
+      }
+    }
+
+    // Функция для загрузки всех отзывов
+    async function loadComments() {
+      try {
+        const response = await fetch('http://localhost:5236/Email/GetAllComments');
+        
+        if (response.ok) {
+          const comments = await response.json();
+          displayComments(comments);
+        } else {
+          const errorText = await response.text();
+          document.getElementById('commentsList').innerHTML = 
+            '<p class="error">Ошибка при загрузке отзывов: ' + errorText + '</p>';
+        }
+      } catch (err) {
+        console.error('Ошибка:', err);
+        document.getElementById('commentsList').innerHTML = 
+          '<p class="error">Ошибка сети: ' + err.message + '</p>';
+      }
+    }
+
+    // Функция для отображения отзывов
+    function displayComments(comments) {
+      const commentsList = document.getElementById('commentsList');
+      
+      if (!comments || comments.length === 0) {
+        commentsList.innerHTML = '<p>Пока нет отзывов. Будьте первым!</p>';
+        return;
+      }
+
+      // Сортируем по дате (новые сначала)
+      comments.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
+
+      let html = '';
+      
+      comments.forEach(comment => {
+        const createdDate = new Date(comment.createdDate).toLocaleDateString('ru-RU');
+        const stars = '★'.repeat(comment.rating) + '☆'.repeat(5 - comment.rating);
+        
+        html += `
+          <div class="comment-item">
+            <div class="comment-header">
+              <span class="comment-rating">${stars}</span>
+              <span>${createdDate}</span>
+            </div>
+            <p>${comment.comment}</p>
+          </div>
+        `;
+      });
+      
+      commentsList.innerHTML = html;
+    }
+
+    // Автоматически загружаем отзывы при загрузке страницы
+    document.addEventListener('DOMContentLoaded', () => {
+      loadComments();
+    });
+  </script>
+  
+  <!-- Подключаем общий скрипт авторизации -->
+  <script src="javaScript/auth.js"></script>
 </body>
 </html>

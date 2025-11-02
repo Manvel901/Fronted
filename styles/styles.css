@@ -593,6 +593,7 @@ padding: 50px 0;
     text-align: center;
     font-size: 18px;
     font-weight: 400;
+    margin-bottom: -45px;
 }
 
 
@@ -602,17 +603,10 @@ padding: 50px 0;
 }
 
 
-.feedback form .inline{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    
-}
-
 .feedback form  label{
 
     color: rgb(255, 255, 255);
-    font-size: 14px;
+    font-size: 19px;
     font-weight: 900;
 }
 
@@ -638,10 +632,15 @@ padding: 50px 0;
 .feedback form textarea{
     resize: none;
     height: 200px;
+    color: white;
 }
-
+.feedback form textarea :placeholder-shown{
+    color: white;
+    font-weight: 400;
+}
 .feedback form button{
     background: #027c43;
+    margin-top: 25px;
     border: 0;
     border-radius: 15px;
     color: white;
@@ -824,13 +823,7 @@ padding: 50px 0;
     margin-bottom: 25px;
 }
 
-.penaltyback p{
-    font-size: 21px;
-    font-weight: 600;
-    margin-bottom: 25px;
-    text-align: center;
-    text-decoration: underline ;
-}
+
 
 .penaltyback .info{
     border: 10px solid rgb(47, 223, 194);
@@ -844,21 +837,7 @@ padding: 50px 0;
     
 }
 
-.penaltyback form label{
-    font-size: 23px;
-    font-weight: 600;
-    margin-right: 5px;
-}
-.penaltyback form input{
-    border: 0.7px solid white;
-    border-radius: 15px;
-    background: #54eab5;
-    outline: none;
-    color: white;
-    font-size: 14px;
-    font-weight: 400;
-    padding: 8px 5px;
-}
+
 
 .penaltyback button{
     color: white;
@@ -867,10 +846,10 @@ padding: 50px 0;
     background: #4ad292;
     border: 0.3px;
     border-radius: 17px;
-    padding: 7px 10px;
+    padding: 7px 15px;
     cursor: pointer;
     transition: all 300ms ease;
-   margin: 35px 65%;
+   margin: 35px 45%;
 
 }
 

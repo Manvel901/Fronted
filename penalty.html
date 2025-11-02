@@ -1,78 +1,135 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-     <meta charset="utf-8">
-     <title>BookYan</title>
-     <link href="styles/styles.css" rel="stylesheet" type= "text/css">
-   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"  type= "text/css">
+  <meta charset="utf-8">
+  <title>BookYan</title>
+  <link href="styles/styles.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" type="text/css">
+  <style>
+  .hidden { display: none !important; }
+  #userWelcome {
+    display: inline-block;
+    margin-right: 10px;
+    color: white;
+  }
+  #authItem button {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
+  <style>
+    .success {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid green;
+      border-radius: 4px;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid red;
+      border-radius: 4px;
+    }
+    .hidden {
+      display: none !important;
+    }
+    #userWelcome {
+      display: inline-block;
+      margin-right: 10px;
+      color: white;
+    }
+    .penalty-item {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    .penalty-amount {
+      color: red;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .penalty-paid {
+      color: green;
+    }
+    .penalties-container {
+      margin-top: 20px;
+    }
+    .pay-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .pay-button:hover {
+      background-color: #45a049;
+    }
+    #authItem button {
+      background: none;
+      border: 1px solid white;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
-  
-    <header class="container">
-      <img src="/img/logo1.png" alt="Error 404">
-      <nav>
-        <ul>
-          <li><a href="/Моя первая страница.html">Home</a></li>
-          <li><a href="/aboutAs.html">About as</a></li>
-          
-          <li><a href="/reservation.html">Reservations</a></li>
-          <li class="active"><a href="/penalty.html">Penalties</a></li>
-          <li><a href="/contacts.html">Contacts</a></li>
-          <li class="btn"><a href="/Моя первая страница.html#bottom">Register</a></li>
-        </ul>
-      </nav>
-    </header>
+  <header class="container">
+  <img src="/img/logo1.png" alt="Error 404">
+  <nav>
+    <ul>
+      <li class="active"><a href="/Моя первая страница.html">Home</a></li>
+      <li><a href="/aboutAs.html">About as</a></li>
+      <li><a href="/reservation.html">Reservations</a></li>
+      <li><a href="/penalty.html">Penalties</a></li>
+      <li><a href="/contacts.html">Contacts</a></li>
+      <li id="registerNav" class="btn"><a href="/Моя первая страница.html#bottom">Register</a></li>
+      <li id="authItem"><button>Авторизация</button></li>
+    </ul>
+  </nav>
+</header>
 
-    <div class="container penal">
-        <div class="info">
-            <h1>Штрафы и просрочки — правила возврата и начисления</h1>
-            <p>
-                Если вы задержали возврат бронированной книги или получили товар, требующий возврата,
-                 с вас может взиматься штраф в соответствии с правилами магазина — 
-                 сумма рассчитывается по дням просрочки или исходя из стоимости издания; 
-                 все детали, сроки и способы оплаты указаны ниже,
-                 а при спорных случаях мы оперативно рассмотрим обращение и предложим решение.
-            </p>
-        </div>
-        <img src="/img/straf1.jpg" alt="Error 404">
+  <div class="container penal">
+    <div class="info">
+      <h1>Штрафы и просрочки — правила возврата и начисления</h1>
+      <p>
+        Если вы задержали возврат бронированной книги или получили товар, требующий возврата,
+        с вас может взиматься штраф в соответствии с правилами магазина — 
+        сумма рассчитывается по дням просрочки или исходя из стоимости издания; 
+        все детали, сроки и способы оплаты указаны ниже,
+        а при спорных случаях мы оперативно рассмотрим обращение и предложим решение.
+      </p>
     </div>
-   
-    <div class="penaltyback">
-      <div class="container info">
-        <h2>
-          Задолженность и срок оплаты
-
-        </h2>
-        <p>
-          Введите информацию, чтобы посмотреть задолженность 
-        </p>
-
-        <form >
-          <div>
-            <label>
-              Id Бронирования
-
-            </label>
-            <input type="penal" id="penalty">
-          </div>
-          <button onclick= checkPenalty() type = "button">Продолжить</button>
-        </form>
-
+    <img src="/img/straf1.jpg" alt="Error 404">
+  </div>
+  
+  <div class="penaltyback">
+    <div class="container info">
+      <h2>Задолженность и срок оплаты</h2>
+      
+      <!-- Добавляем контейнер для отображения штрафов -->
+      <div id="penaltiesSection">
+        <button onclick="loadPenalties()" type="button">Мои штрафы</button>
+        <div id="penaltiesList" class="penalties-container"></div>
+        <div id="penaltiesMessage"></div>
       </div>
     </div>
-  <script>
-    function checkPenalty() {
-      let reservId = document.querySelector('#penalty').value;
-      if (!reservId) {
-        alert("Поле не заполнено");
-      }
-      else{
-          alert("Успешно! \n Ваши штрафы: ");
-      }
-    }
-  </script>
+  </div>
+
   <footer>
     <div class="container blocks">
       <div>
@@ -84,7 +141,6 @@
         <ul>
           <li>+7-495-777-77-77</li>
           <li>BookYan@mail.ru</li>
-          
         </ul>
       </div>
       <div>
@@ -99,5 +155,307 @@
     <hr>
     <p>Заходите ещё!</p>
   </footer>
+
+  <script>
+    // Функции для управления авторизацией
+    function updateNavigation() {
+      const token = localStorage.getItem('authToken');
+      const currentUser = localStorage.getItem('currentUser');
+      const registerNav = document.getElementById('registerNav');
+      const authItem = document.getElementById('authItem');
+
+      if (token && currentUser) {
+        // Пользователь авторизован - скрываем Register, меняем кнопку авторизации на "Выйти"
+        registerNav.classList.add('hidden');
+        
+        const user = JSON.parse(currentUser);
+        authItem.innerHTML = `
+          <span id="userWelcome">Добро пожаловать, ${user.fullName}!</span>
+          <button onclick="logout()">Выйти</button>
+        `;
+      } else {
+        // Пользователь не авторизован
+        registerNav.classList.remove('hidden');
+        authItem.innerHTML = '<button onclick="authorize()">Авторизация</button>';
+      }
+    }
+
+    async function authorize() {
+      // Проверяем, есть ли уже токен в localStorage
+      const existingToken = localStorage.getItem('authToken');
+      
+      if (existingToken) {
+        // Если токен уже есть, используем его для авторизации
+        try {
+          const response = await fetch('http://localhost:5236/User/Me', {
+            headers: {
+              'Authorization': `Bearer ${existingToken}`,
+              'Content-Type': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            const user = await response.json();
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            updateNavigation();
+            alert(`Добро пожаловать, ${user.fullName}!`);
+          } else {
+            // Если токен невалидный, запрашиваем новый
+            const token = prompt('Введите ваш токен:');
+            if (!token) return;
+            await validateToken(token);
+          }
+        } catch (err) {
+          console.error('Ошибка авторизации:', err);
+          const token = prompt('Введите ваш токен:');
+          if (!token) return;
+          await validateToken(token);
+        }
+      } else {
+        // Если токена нет, запрашиваем его
+        const token = prompt('Введите ваш токен:');
+        if (!token) return;
+        await validateToken(token);
+      }
+    }
+
+    async function validateToken(token) {
+      try {
+        const response = await fetch('http://localhost:5236/User/Me', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          const user = await response.json();
+          localStorage.setItem('authToken', token);
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          updateNavigation();
+          alert(`Добро пожаловать, ${user.fullName}!`);
+        } else {
+          alert('Неверный токен!');
+        }
+      } catch (err) {
+        console.error('Ошибка авторизации:', err);
+        alert('Ошибка авторизации: ' + err.message);
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('currentUser');
+      updateNavigation();
+      alert('Вы вышли из системы');
+    }
+
+    // Функция для загрузки штрафов пользователя
+    async function loadPenalties() {
+      const token = localStorage.getItem('authToken');
+      if (!token) {
+        alert('Сначала авторизуйтесь!');
+        return;
+      }
+
+      const penaltiesList = document.getElementById('penaltiesList');
+      const penaltiesMessage = document.getElementById('penaltiesMessage');
+      
+      penaltiesList.innerHTML = '';
+      penaltiesMessage.textContent = 'Загрузка...';
+      penaltiesMessage.className = '';
+
+      try {
+        const response = await fetch('http://localhost:5236/Penalty/MyPenalties', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          const penalties = await response.json();
+          displayPenalties(penalties);
+        } else {
+          const errorText = await response.text();
+          penaltiesMessage.textContent = 'Ошибка при загрузке штрафов: ' + errorText;
+          penaltiesMessage.className = 'error';
+        }
+      } catch (err) {
+        console.error('Ошибка при загрузке штрафов:', err);
+        penaltiesMessage.textContent = 'Ошибка сети: ' + err.message;
+        penaltiesMessage.className = 'error';
+      }
+    }
+
+    // Функция для отображения штрафов
+    function displayPenalties(penalties) {
+      const penaltiesList = document.getElementById('penaltiesList');
+      const penaltiesMessage = document.getElementById('penaltiesMessage');
+      
+      penaltiesList.innerHTML = '';
+      penaltiesMessage.textContent = '';
+      
+      if (!penalties || penalties.length === 0) {
+        penaltiesMessage.textContent = 'У вас нет штрафов';
+        penaltiesMessage.className = 'success';
+        return;
+      }
+
+      let html = '';
+      let totalAmount = 0;
+      
+      penalties.forEach(penalty => {
+        const issueDate = new Date(penalty.issueDate).toLocaleDateString('ru-RU');
+        const isPaid = penalty.isPaid ? 'Оплачен' : 'Не оплачен';
+        const statusClass = penalty.isPaid ? 'penalty-paid' : 'penalty-amount';
+        
+        if (!penalty.isPaid) {
+          totalAmount += penalty.amount;
+        }
+        
+        html += `
+          <div class="penalty-item">
+            <h3>${penalty.bookTitle}</h3>
+            <p><strong>Сумма:</strong> <span class="${statusClass}">${penalty.amount} руб.</span></p>
+            <p><strong>Дата начисления:</strong> ${issueDate}</p>
+            <p><strong>Статус:</strong> ${isPaid}</p>
+            ${penalty.paidDate ? `<p><strong>Дата оплаты:</strong> ${new Date(penalty.paidDate).toLocaleDateString('ru-RU')}</p>` : ''}
+            ${!penalty.isPaid ? `<button class="pay-button" onclick="payPenalty(${penalty.id})">Оплатить штраф</button>` : ''}
+          </div>
+        `;
+      });
+      
+      // Добавляем общую сумму долга
+      if (totalAmount > 0) {
+        html = `
+          <div class="penalty-item" style="background-color: #fff3cd; border-color: #ffeaa7;">
+            <h3>Общая сумма долга</h3>
+            <p class="penalty-amount">${totalAmount} руб.</p>
+          </div>
+          ${html}
+        `;
+      }
+      
+      penaltiesList.innerHTML = html;
+    }
+
+    // Функция для оплаты штрафа (заглушка)
+    function payPenalty(penaltyId) {
+      if (confirm('Вы уверены, что хотите оплатить этот штраф?')) {
+        // Здесь будет логика оплаты
+        alert(`Штраф #${penaltyId} оплачен! (функция оплаты в разработке)`);
+        // Обновляем список штрафов
+        loadPenalties();
+      }
+    }
+
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', () => {
+      updateNavigation();
+    });
+  </script>
+  <script>
+  // Функция для загрузки штрафов пользователя
+  async function loadPenalties() {
+      const token = localStorage.getItem('authToken');
+      if (!token) {
+          alert('Сначала авторизуйтесь!');
+          return;
+      }
+
+      const penaltiesList = document.getElementById('penaltiesList');
+      const penaltiesMessage = document.getElementById('penaltiesMessage');
+      
+      penaltiesList.innerHTML = '';
+      penaltiesMessage.textContent = 'Загрузка...';
+      penaltiesMessage.className = '';
+
+      try {
+          const response = await fetch('http://localhost:5236/Penalty/MyPenalties', {
+              method: 'GET',
+              headers: {
+                  'Authorization': `Bearer ${token}`,
+                  'Content-Type': 'application/json'
+              }
+          });
+
+          if (response.ok) {
+              const penalties = await response.json();
+              displayPenalties(penalties);
+          } else {
+              const errorText = await response.text();
+              penaltiesMessage.textContent = 'Ошибка при загрузке штрафов: ' + errorText;
+              penaltiesMessage.className = 'error';
+          }
+      } catch (err) {
+          console.error('Ошибка при загрузке штрафов:', err);
+          penaltiesMessage.textContent = 'Ошибка сети: ' + err.message;
+          penaltiesMessage.className = 'error';
+      }
+  }
+
+  // Функция для отображения штрафов
+  function displayPenalties(penalties) {
+      const penaltiesList = document.getElementById('penaltiesList');
+      const penaltiesMessage = document.getElementById('penaltiesMessage');
+      
+      penaltiesList.innerHTML = '';
+      penaltiesMessage.textContent = '';
+      
+      if (!penalties || penalties.length === 0) {
+          penaltiesMessage.textContent = 'У вас нет штрафов';
+          penaltiesMessage.className = 'success';
+          return;
+      }
+
+      let html = '';
+      let totalAmount = 0;
+      
+      penalties.forEach(penalty => {
+          const issueDate = new Date(penalty.issueDate).toLocaleDateString('ru-RU');
+          const isPaid = penalty.isPaid ? 'Оплачен' : 'Не оплачен';
+          const statusClass = penalty.isPaid ? 'penalty-paid' : 'penalty-amount';
+          
+          if (!penalty.isPaid) {
+              totalAmount += penalty.amount;
+          }
+          
+          html += `
+              <div class="penalty-item">
+                  <h3>${penalty.bookTitle}</h3>
+                  <p><strong>Сумма:</strong> <span class="${statusClass}">${penalty.amount} руб.</span></p>
+                  <p><strong>Дата начисления:</strong> ${issueDate}</p>
+                  <p><strong>Статус:</strong> ${isPaid}</p>
+                  ${penalty.paidDate ? `<p><strong>Дата оплаты:</strong> ${new Date(penalty.paidDate).toLocaleDateString('ru-RU')}</p>` : ''}
+                  ${!penalty.isPaid ? `<button class="pay-button" onclick="payPenalty(${penalty.id})">Оплатить штраф</button>` : ''}
+              </div>
+          `;
+      });
+      
+      // Добавляем общую сумму долга
+      if (totalAmount > 0) {
+          html = `
+              <div class="penalty-item" style="background-color: #fff3cd; border-color: #ffeaa7;">
+                  <h3>Общая сумма долга</h3>
+                  <p class="penalty-amount">${totalAmount} руб.</p>
+              </div>
+              ${html}
+          `;
+      }
+      
+      penaltiesList.innerHTML = html;
+  }
+
+  // Функция для оплаты штрафа (заглушка)
+  function payPenalty(penaltyId) {
+      if (confirm('Вы уверены, что хотите оплатить этот штраф?')) {
+          alert(`Штраф #${penaltyId} оплачен! (функция оплаты в разработке)`);
+          loadPenalties();
+      }
+  }
+</script>
+  <script src="javaScript/auth.js"></script>
 </body>
 </html>
