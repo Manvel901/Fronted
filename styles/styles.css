@@ -10,6 +10,24 @@
     overflow: hidden;
 
 }
+ .hidden { display: none !important; }
+  #userWelcome {
+    font-size: 16px;
+    display: inline-block;
+    margin-right: 10px;
+    color: white;
+  }
+  #authItem button {
+    background: rgb(110, 233, 175);
+    border: 0;
+    border-radius: 25px;
+    color: white;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+  }
 .container{
    margin: 0 auto;
    width: 1400px;
@@ -634,8 +652,8 @@ padding: 50px 0;
     height: 200px;
     color: white;
 }
-.feedback form textarea :placeholder-shown{
-    color: white;
+.feedback form textarea ::placeholder{
+    color: rgb(255, 255, 255);
     font-weight: 400;
 }
 .feedback form button{

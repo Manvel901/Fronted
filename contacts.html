@@ -6,20 +6,7 @@
   <link href="styles/styles.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" type="text/css">
   <style>
-    .hidden { display: none !important; }
-    #userWelcome {
-      display: inline-block;
-      margin-right: 10px;
-      color: white;
-    }
-    #authItem button {
-      background: none;
-      border: 1px solid white;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+    
     .success {
       color: green;
       font-weight: bold;
@@ -69,7 +56,7 @@
         <li><a href="/penalty.html">Penalties</a></li>
         <li class="active"><a href="/contacts.html">Contacts</a></li>
         <li id="registerNav" class="btn"><a href="/Моя первая страница.html#bottom">Register</a></li>
-        <li id="authItem"><button>Авторизация</button></li>
+        <li id="authItem"><button>Authorization</button></li>
       </ul>
     </nav>
   </header>
@@ -106,7 +93,12 @@
       <!-- Сообщение о результате -->
       <div id="feedbackMessage"></div>
       
-      
+      <!-- Секция для отображения отзывов -->
+      <!-- <div class="comments-container">
+        <h3>Последние отзывы</h3>
+        <button type="button" onclick="loadComments()">Показать все отзывы</button>
+        <div id="commentsList"></div>
+      </div> -->
     </div>
   </div>
 
@@ -172,8 +164,9 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            Comment: message,
+            Message: message,
             Rating: parseInt(rating)
+            // UserId автоматически устанавливается на сервере из токена
           })
         });
 

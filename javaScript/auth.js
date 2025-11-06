@@ -33,7 +33,7 @@ class AuthManager {
             // Пользователь не авторизован
             if (registerNav) registerNav.classList.remove('hidden');
             if (authItem) {
-                authItem.innerHTML = '<button onclick="authManager.authorize()">Авторизация</button>';
+                authItem.innerHTML = '<button onclick="authManager.authorize()">Authorization</button>';
             }
         }
     }
