@@ -49,7 +49,7 @@ font-weight: 800;
 
 header nav{
     float: right;
-    width: 60%;
+    width: 70%;
     margin-top: 10px;
 }
 
@@ -80,9 +80,9 @@ header nav ul li button{
 
 }
 
-header nav ul li button:hover{
+/* header nav ul li button:hover{
     transform: scale(1.2);
-}
+} */
 header nav ul li a{
     font-weight: 200;
     color: rgb(4, 64, 4);

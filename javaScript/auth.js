@@ -48,6 +48,7 @@ class AuthManager {
         });
     }
 
+
     // Функция авторизации
     async authorize() {
         const existingToken = localStorage.getItem('authToken');
@@ -116,6 +117,8 @@ class AuthManager {
         this.updateNavigation();
         alert('Вы вышли из системы');
     }
+    
+
 }
 
 // Создаем глобальный экземпляр менеджера авторизации
