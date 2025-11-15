@@ -198,12 +198,15 @@
           <h3>Окно регистрации</h3>
         </div>
         <div>
-          <input id="regFullName" placeholder="Введите имя" />
-          <input id="regEmail" type="email" placeholder="Введите email" />
-          <input id="regPassword" type="password" placeholder="Введите пароль" />
-          <button id="regBtn">Продолжить</button>
-          <div id="regMsg"></div>
-          <div id="tokenDisplay" class="hidden"></div>
+          <form autocomplete="on">
+
+            <input type="text" tabindex="1" id="regFullName" placeholder="Введите имя" />
+            <input  id="regEmail" type="email" tabindex="2" placeholder="Введите email" />
+            <input id="regPassword" type="password" tabindex="3" placeholder="Введите пароль" />
+            <button type="reset" id="regBtn">Продолжить</button>
+            <div id="regMsg"></div>
+            <div id="tokenDisplay" class="hidden"></div>
+          </form>
         </div>
       </div>
     </div>
@@ -218,8 +221,8 @@
       <div>
         <h4>Contacts</h4>
         <ul>
-          <li>+7-495-777-77-77</li>
-          <li>BookYan@mail.ru</li>
+          <li><a href="tel:74957777777">+7-495-777-77-77</a>/li>
+          <li> <a href="mailto:BookYan@mail.ru"></a>BookYan@mail.ru</li>
         </ul>
       </div>
       <div>

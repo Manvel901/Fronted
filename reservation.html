@@ -44,15 +44,15 @@
           <div class="inline">
             <div>
               <label>Название книги</label>
-             <input type="text" id="book" placeholder="Введите название книги" required>
+             <input type="text" id="book" tabindex="1" placeholder="Введите название книги" required>
             </div>
             <div>
               <label>Автор</label>
-             <input type="text" class="author" placeholder="Введите имя автора" required>
+             <input type="text" class="author" tabindex="2" placeholder="Введите имя автора" required>
             </div>
               
           </div>
-          <button onclick=reserv() type="button">Забронировать</button>
+          <button type="reset" onclick=reserv() type="button">Забронировать</button>
          </form>
            
 
@@ -170,8 +170,8 @@ async function reserv() {
       <div>
         <h4>Contacts</h4>
         <ul>
-          <li>+7-495-777-77-77</li>
-          <li>BookYan@mail.ru</li>
+          <li> <a href="tel:74957777777">+7-495-777-77-77</a></li>
+          <li><a href="emailto:BookYan@mail.ru">BookYan@mail.ru</a></li>
           
         </ul>
       </div>
