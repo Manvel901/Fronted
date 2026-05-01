@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <title>BookYan</title>
   <link rel="shortcut icon" href="/img/logo1.png" type="image/x-icon">
-  <link href="styles/styles.css" rel="stylesheet" type="text/css">
+  <link href="
+  " rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet" type="text/css">
-  <link rel="manifest" href="/manifest.json">/
+  <link rel="manifest" href="/manifest.json">
   <!-- Добавляем стили для уведомлений -->
   <style>
     .notification-badge {
@@ -613,5 +614,17 @@
     });
   </script>
   <script src="javaScript/auth.js"></script>
+  <script>
+  window.addEventListener('load', async () => {
+    if ('serviceWorker' in navigator) {
+      try {
+        const reg = await navigator.serviceWorker.register('/sw.js');
+        console.log('Service Worker registered', reg);
+      } catch (error) {
+        console.error('Service Worker register failed', error);
+      }
+    }
+  });
+</script>
 </body>
 </html>
